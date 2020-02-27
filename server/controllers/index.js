@@ -1,4 +1,5 @@
 var models = require('../models');
+var express = require('express');
 
 // request({
 //   method: 'POST',
@@ -17,14 +18,29 @@ var models = require('../models');
 
 module.exports = {
   messages: {
-    get: function (req, res) {}, // a function which handles a get request for all messages
-    post: function (req, res) {} // a function which handles posting a message to the database
+    get: function (req, res) { }, // a function which handles a get request for all messages
+    post: function (req, res) { } // a function which handles posting a message to the database
   },
 
   users: {
     // Ditto as above
-    get: function (req, res) {},
-    post: function (req, res) {}
+    get: function (req, res) { },
+    post: function (req, res) {
+      models.users.post(req.json)
+        .then((result) => {
+          if (result === undefined) {
+            console.log('No result from INSERT');
+          } else {
+            res.send('User added');
+            console.log(result);
+          }
+        })
+        .catch(err => {
+          res.send(err);
+          console.log(err);
+        });
+
+    }
   }
 };
 
