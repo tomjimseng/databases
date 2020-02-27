@@ -11,6 +11,8 @@ x Use npm to install and save mysql (npm install mysql --save)
   x looked through test and fixed variable names to match database
   x fix for beforeEach function
 
+-fix post handling for db (model)
+
 -fix post handling for server (controllers)
 
--fix post handling for db (model)
+
