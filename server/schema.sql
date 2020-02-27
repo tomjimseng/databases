@@ -2,17 +2,6 @@ CREATE DATABASE chat;
 
 USE chat;
 
-CREATE TABLE messages (
-  /* Describe your table here.*/
-  id INTEGER NOT NULL AUTO_INCREMENT,
-  room_id INTEGER,
-  user_id INTEGER,
-  messageText TEXT,
-  dateCreated DATE,
-  PRIMARY KEY (id),
-  FOREIGN KEY (room_id) REFERENCES Room(id),
-  FOREIGN KEY (user_id) REFERENCES User(id)
-);
 
 /* Create other tables and define schemas for them here! */
 CREATE TABLE User (
@@ -39,6 +28,17 @@ CREATE TABLE StalkerMode (
   FOREIGN KEY (victim_id) REFERENCES User(id)
 );
 
+CREATE TABLE messages (
+  /* Describe your table here.*/
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  room_id INTEGER,
+  user_id INTEGER,
+  messageText TEXT,
+  dateCreated DATE,
+  PRIMARY KEY (id),
+  FOREIGN KEY (room_id) REFERENCES Room(id),
+  FOREIGN KEY (user_id) REFERENCES User(id)
+);
 
 
 /*  Execute this file from the command line by typing:
