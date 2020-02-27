@@ -34,7 +34,7 @@ CREATE TABLE messages (
   room_id INTEGER,
   user_id INTEGER,
   messageText TEXT,
-  dateCreated DATE,
+  dateCreated DATETIME,
   PRIMARY KEY (id),
   FOREIGN KEY (room_id) REFERENCES Room(id),
   FOREIGN KEY (user_id) REFERENCES User(id)
