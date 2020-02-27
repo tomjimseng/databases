@@ -1,5 +1,5 @@
 var db = require('../db');
-const { DateTime } = require("luxon");
+const { DateTime } = require('luxon');
 var dateTime = JSON.stringify(DateTime.local());
 
 module.exports = {
