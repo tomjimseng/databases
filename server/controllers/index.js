@@ -26,7 +26,11 @@ module.exports = {
     // Ditto as above
     get: function (req, res) { },
     post: function (req, res) {
-      models.users.post(req.json)
+      // added req.body.username instead of req.json
+      console.log('req.body:', req.body );
+      // console.log('req.json:', req.json );
+      var username = req.body.username;
+      models.users.post(username)
         .then((result) => {
           if (result === undefined) {
             console.log('No result from INSERT');
@@ -39,7 +43,6 @@ module.exports = {
           res.send(err);
           console.log(err);
         });
-
     }
   }
 };

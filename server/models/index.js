@@ -1,6 +1,7 @@
 var db = require('../db');
 const { DateTime } = require('luxon');
 var dateTime = JSON.stringify(DateTime.local());
+var mysql = require('mysql');
 
 module.exports = {
   messages: {
@@ -21,19 +22,19 @@ module.exports = {
 
 
     },
-    post: function ({username}) {
+    post: function (username) {
       // function takes in call back
       // create query for username data (INSERT )
       // check for err
       // check if table was populated with data
       // callback the row
       return new Promise((resolve, reject) => {
-        var queryString = `INSERT INTO users (username) VALUES (${username})`;
-        db.dbConnection.query(queryString, (err, result) => {
+        var queryString = `INSERT INTO user (username) VALUES ('${username}')`;
+        db.query(queryString, (err, result) => {
           if (err) {
             reject(err);
           } else {
-            resolve(result);
+            resolve();
           }
         });
       });

@@ -12,6 +12,8 @@ x Use npm to install and save mysql (npm install mysql --save)
   x fix for beforeEach function
 
 -fix post handling for db (model)
+  - get response from post request for username
+
 
 -fix post handling for server (controllers)
 
