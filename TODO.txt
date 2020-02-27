@@ -1,8 +1,10 @@
 GOAL: Create a database for persistant storage of data within the chatterbox app
 x Diagram the multi-table schema
   x Figure out components of schema
-- Write schema into schema.sql and verify with SHOW TABLES
+x Write schema into schema.sql and verify with SHOW TABLES
+  x coded tables into schema.sql with CREATE TABLE
+  x verified table with DESCRIBE
 
-- Use npm to install and save mysql (npm install mysql --save)
+x Use npm to install and save mysql (npm install mysql --save)
 
 -Go back and refactor test to take in variables

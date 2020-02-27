@@ -1,5 +1,20 @@
 var models = require('../models');
 
+// request({
+//   method: 'POST',
+//   uri: 'http://127.0.0.1:3000/classes/users',
+//   json: { username: 'Valjean' }
+// }, function () {
+//   // Post a message to the node chat server:
+//   request({
+//     method: 'POST',
+//     uri: 'http://127.0.0.1:3000/classes/messages',
+//     json: {
+//       username: 'Valjean',
+//       message: 'In mercy\'s name, three days is all I need.',
+//       roomname: 'Hello'
+//     }
+
 module.exports = {
   messages: {
     get: function (req, res) {}, // a function which handles a get request for all messages
