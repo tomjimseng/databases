@@ -4,7 +4,7 @@ var express = require('express');
 // request({
 //   method: 'POST',
 //   uri: 'http://127.0.0.1:3000/classes/users',
-//   json: { username: 'Valjean' }
+//   json: { roomname: 'Valjean' }
 // }, function () {
 //   // Post a message to the node chat server:
 //   request({
@@ -44,6 +44,36 @@ module.exports = {
         .then(() => {
           console.log('resolved');
           res.end('User added');
+        })
+        .catch(err => {
+          res.send(err);
+          console.log(err);
+        });
+    }
+  },
+
+  rooms: {
+    // Ditto as above
+    get: function (req, res) {
+      models.rooms.get()
+        .then((result) => {
+          console.log('resolved');
+          res.end(JSON.stringify(result));
+        })
+        .catch(err => {
+          res.send(err);
+          console.log(err);
+        });
+    },
+    post: function (req, res) {
+      // added req.body.username instead of req.json
+      console.log('req.body:', req.body);
+      // console.log('req.json:', req.json );
+      var roomname = req.body.roomname;
+      models.rooms.post(roomname)
+        .then(() => {
+          console.log('resolved');
+          res.end('Room added');
         })
         .catch(err => {
           res.send(err);

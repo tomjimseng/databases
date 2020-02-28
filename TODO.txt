@@ -13,9 +13,13 @@ x Use npm to install and save mysql (npm install mysql --save)
 
 -fix post handling for db (model)
   x get response from post request for username
-  - get response from get request to user table
+  x get response from get request to user table
+
+-create room post and get request for models and controllers
+  
 
 
 -fix post handling for server (controllers)
+  -
 
 
