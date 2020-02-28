@@ -19,7 +19,16 @@ module.exports = {
       // create query for username data (SELECT )
       // check for err
       // resolve result
-
+      return new Promise((resolve, reject) => {
+        var queryString = 'SELECT * FROM user';
+        db.query(queryString, (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        });
+      });
 
     },
     post: function (username) {

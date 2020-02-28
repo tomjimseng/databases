@@ -24,7 +24,17 @@ module.exports = {
 
   users: {
     // Ditto as above
-    get: function (req, res) { },
+    get: function (req, res) {
+      models.users.get()
+        .then((result) => {
+          console.log('resolved');
+          res.end(JSON.stringify(result));
+        })
+        .catch(err => {
+          res.send(err);
+          console.log(err);
+        });
+    },
     post: function (req, res) {
       // added req.body.username instead of req.json
       console.log('req.body:', req.body);
