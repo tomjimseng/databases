@@ -23,6 +23,7 @@ module.exports = {
 
     },
     post: function (username) {
+      console.log('model/index.js - username:', username);
       // function takes in call back
       // create query for username data (INSERT )
       // check for err

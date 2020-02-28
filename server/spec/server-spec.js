@@ -18,13 +18,13 @@ describe('Persistent Node Chat Server', function () {
 
     /* Empty the db table before each test so that multiple tests
      * (or repeated runs of the tests) won't screw each other up: */
-    var tablenames = ['messages', 'stalkermode', 'room', 'user'];
+    // var tablenames = ['messages', 'stalkermode', 'room', 'user'];
 
-    dbConnection.query('SET FOREIGN_KEY_CHECKS = 0');
-    tablenames.forEach((tablename) => {
-      dbConnection.query('truncate ' + tablename);
-    });
-    dbConnection.query('SET FOREIGN_KEY_CHECKS = 1');
+    // dbConnection.query('SET FOREIGN_KEY_CHECKS = 0');
+    // tablenames.forEach((tablename) => {
+    //   dbConnection.query('truncate ' + tablename);
+    // });
+    // dbConnection.query('SET FOREIGN_KEY_CHECKS = 1');
     done();
   });
 
@@ -32,7 +32,56 @@ describe('Persistent Node Chat Server', function () {
     dbConnection.end();
   });
 
-  it('Should insert posted messages to the DB', function (done) {
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+  ////             ADDED NEW TESTS    //////////////
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+
+  it('Should insert new user to the DB', function (done) {
+    // var tablenames = ['messages', 'stalkermode', 'room', 'user'];
+    // dbConnection.query('SET FOREIGN_KEY_CHECKS = 0');
+    // tablenames.forEach((tablename) => {
+    //   dbConnection.query('truncate ' + tablename);
+    // });
+    // dbConnection.query('SET FOREIGN_KEY_CHECKS = 1');
+
+    // Post the user to the chat server.
+    request({
+      method: 'POST',
+      uri: 'http://127.0.0.1:3000/classes/users',
+      json: { username: 'Valjean' }
+    }, function () {
+      // Now if we look in the database, we should find the
+      // posted message there.
+
+      // TODO: You might have to change this test to get all the data from
+      // your message table, since this is schema-dependent.
+      var queryString = 'SELECT * FROM user';
+      var queryArgs = [];
+
+      dbConnection.query(queryString, queryArgs, function (err, results) {
+        // Should have one result:
+        console.log(results);
+        expect(results.length).to.equal(1);
+
+        // TODO: If you don't have a column named text, change this test.
+        expect(results[0].username).to.equal('Valjean');
+
+        done();
+      });
+    });
+  });
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+  ////             ORIGINAL TESTS    ///////////////
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+  xit('Should insert posted messages to the DB', function (done) {
     // Post the user to the chat server.
     request({
       method: 'POST',
@@ -70,7 +119,7 @@ describe('Persistent Node Chat Server', function () {
     });
   });
 
-  it('Should output all messages from the DB', function (done) {
+  xit('Should output all messages from the DB', function (done) {
     // Let's insert a message into the db
     var queryString = "";
     var queryArgs = [];

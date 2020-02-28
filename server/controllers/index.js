@@ -27,17 +27,13 @@ module.exports = {
     get: function (req, res) { },
     post: function (req, res) {
       // added req.body.username instead of req.json
-      console.log('req.body:', req.body );
+      console.log('req.body:', req.body);
       // console.log('req.json:', req.json );
       var username = req.body.username;
       models.users.post(username)
-        .then((result) => {
-          if (result === undefined) {
-            console.log('No result from INSERT');
-          } else {
-            res.send('User added');
-            console.log(result);
-          }
+        .then(() => {
+          console.log('resolved');
+          res.end('User added');
         })
         .catch(err => {
           res.send(err);
