@@ -19,7 +19,18 @@ var express = require('express');
 module.exports = {
   messages: {
     get: function (req, res) { }, // a function which handles a get request for all messages
-    post: function (req, res) { } // a function which handles posting a message to the database
+    post: function (req, res) {
+      var body = req.body;
+      models.messages.post(body)
+        .then(() => {
+          console.log('resolved');
+          res.end('message added');
+        })
+        .catch(err => {
+          res.send(err);
+          console.log(err);
+        });
+    } // a function which handles posting a message to the database
   },
 
   users: {

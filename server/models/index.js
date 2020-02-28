@@ -5,11 +5,35 @@ var mysql = require('mysql');
 
 module.exports = {
   messages: {
-    get: function () {}, // a function which produces all the messages
-    post: function () {
-      //
+    get: function () {
+    //   return new Promise((resolve, reject) => {
+    //     var queryString = `INSERT INTO user (username) VALUES ('${username}')`;
+    //     db.query(queryString, (err, result) => {
+    //       if (err) {
+    //         reject(err);
+    //       } else {
+    //         resolve();
+    //       }
+    //     });
+    //   });
+    }, // a function which produces all the messages
+    post: function ({roomname, username, messageText}) {
+      return new Promise((resolve, reject) => {
+        var queryString = `INSERT INTO messages (room_id, user_id, messageText) VALUES (
+          (SELECT id FROM room WHERE roomname = '${roomname}'),
+          (SELECT id FROM user WHERE username = '${username}'),
+          '${messageText}')`;
 
-    } // a function which can be used to insert a message into the database
+        db.query(queryString, (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve();
+          }
+        });
+      });
+    // a function which can be used to insert a message into the database
+    }
   },
 
   users: {

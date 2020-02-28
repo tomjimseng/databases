@@ -11,15 +11,29 @@ x Use npm to install and save mysql (npm install mysql --save)
   x looked through test and fixed variable names to match database
   x fix for beforeEach function
 
--fix post handling for db (model)
+x fix post and get handling for users (model)
   x get response from post request for username
   x get response from get request to user table
 
--create room post and get request for models and controllers
-  
+x fix post and get handling for users (controller)
+  x get response from post request for username
+  x get response from get request to user table
+
+x fix post and get handling for rooms (model)
+  x get response from post request for roomname
+  x get response from get request to room table
+
+x fix post and get handling for rooms (controller)
+  x get response from post request for roomname
+  x get response from get request to room table
 
 
--fix post handling for server (controllers)
-  -
+x fix post and get handling for messages (model)
+  x get response from post request for username
+  x get response from get request to user table
+
+- fix post and get handling for messages (controller)
+  - get response from post request for text
+  - get response from get request to messages table
 
 
